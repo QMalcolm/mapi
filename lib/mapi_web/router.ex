@@ -9,14 +9,18 @@ defmodule MapiWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  scope "/web", MapiWeb do
+    pipe_through :browser
+
+    get "/", PageController, :index
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", MapiWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
+    pipe_through :api
   end
 
   # Other scopes may use custom stacks.
@@ -34,7 +38,7 @@ defmodule MapiWeb.Router do
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
+    scope "/web" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: MapiWeb.Telemetry
     end
