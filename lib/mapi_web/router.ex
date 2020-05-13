@@ -21,6 +21,8 @@ defmodule MapiWeb.Router do
 
   scope "/", MapiWeb do
     pipe_through :api
+
+    resources "/pizza_reviews", PizzaReviewController, only: [:show, :index]
   end
 
   # Other scopes may use custom stacks.

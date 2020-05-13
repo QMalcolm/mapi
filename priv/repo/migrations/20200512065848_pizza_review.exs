@@ -1,8 +1,8 @@
-defmodule Mapi.Repo.Migrations.PizzaReview do
+defmodule Mapi.Repo.Migrations.CreatePizzareviews do
   use Ecto.Migration
 
   def change do
-    create table(:pizza_review, primary_key: false) do
+    create table(:pizzareviews, primary_key: false) do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :address, :string
@@ -12,7 +12,6 @@ defmodule Mapi.Repo.Migrations.PizzaReview do
       add :body, :string
       add :published, :boolean, default: false
       add :findable, :boolean, default: true
-      add :deleted_at, :naive_datetime, default: nil
 
       timestamps()
     end
