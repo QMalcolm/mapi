@@ -11,6 +11,6 @@ defmodule MapiWeb.PizzaReviewView do
     end
 
     def render("pizza_review.json", %{pizza_review: pizza_review}) do
-        Jason.encode(pizza_review)
+        pizza_review
     end
 end
